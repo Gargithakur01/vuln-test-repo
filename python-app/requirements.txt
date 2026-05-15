@@ -1,10 +1,10 @@
 # Python Dependencies - Security Remediated
 # Updated by Harness Security Bot
 
-# Django - upgraded from 2.2.0 (63 CVEs fixed)
-Django>=4.2.20
+# Django - upgraded from 2.2.0 (63+ CVEs fixed)
+Django>=4.2.30
 
-# Requests - upgraded from 2.25.0 (5 CVEs fixed)
+# Requests - upgraded from 2.25.0
 requests>=2.32.3
 
 # PyYAML - upgraded from 5.3 (CVE-2020-14343 RCE fixed)
@@ -19,7 +19,7 @@ urllib3>=2.0.7
 # cryptography - upgraded from 3.3.0 (14 CVEs fixed)
 cryptography>=43.0.1
 
-# Jinja2 - upgraded from 2.11.0 (6 CVEs fixed including XSS)
+# Jinja2 - upgraded from 2.11.0 (6 CVEs fixed)
 Jinja2>=3.1.6
 
 # Flask - upgraded from 1.1.2 (3 CVEs fixed)
@@ -34,35 +34,35 @@ paramiko>=3.4.0
 # lxml - upgraded from 4.6.2 (7 CVEs fixed)
 lxml>=4.9.4
 
-# httpx - upgraded from 0.18.0 (2 CVEs fixed)
+# httpx - upgraded from 0.18.0
 httpx>=0.23.0
 
-# numpy - upgraded from 1.19.0 (3 CVEs fixed)
+# numpy - upgraded from 1.19.0
 numpy>=1.22.0
 
 # aiohttp - upgraded from 3.7.0 (39 CVEs fixed)
-aiohttp>=3.10.11
+aiohttp>=3.13.4
 
-# setuptools - upgraded from 58.0.0 (5 CVEs fixed)
+# setuptools - upgraded from 58.0.0
 setuptools>=78.1.1
 
-# certifi - upgraded from 2022.12.7 (4 CVEs fixed)
+# certifi - upgraded from 2022.12.7
 certifi>=2024.7.4
 
-# sqlparse - upgraded from 0.4.2 (4 CVEs fixed including ReDoS)
+# sqlparse - upgraded from 0.4.2
 sqlparse>=0.5.0
 
-# pycryptodome - upgraded from 3.9.0 (1 CVE fixed)
+# pycryptodome - upgraded from 3.9.0
 pycryptodome>=3.19.1
 
-# idna - upgraded from 2.10 (2 CVEs fixed)
+# idna - upgraded from 2.10
 idna>=3.7
 
-# tornado - upgraded from 6.1 (10 CVEs fixed)
+# tornado - upgraded from 6.1
 tornado>=6.4.2
 
-# redis - upgraded from 4.3.0 (4 CVEs fixed)
+# redis - upgraded from 4.3.0
 redis>=4.5.4
 
-# python-jose - upgraded from 3.3.0 (4 CVEs fixed)
+# python-jose - upgraded from 3.3.0
 python-jose>=3.4.0

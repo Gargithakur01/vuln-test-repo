@@ -31,101 +31,101 @@
             <version>2.24.3</version>
         </dependency>
 
-        <!-- Spring Framework - upgraded from 5.3.17 (Spring4Shell CVE-2022-22965 fixed) -->
+        <!-- Spring Framework - upgraded from 5.3.17 (Spring4Shell + more fixes) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.3.39</version>
+            <version>5.3.42</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.3.39</version>
+            <version>5.3.42</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>5.3.39</version>
+            <version>5.3.42</version>
         </dependency>
 
-        <!-- Jackson Databind - upgraded from 2.9.10 (43 deserialization CVEs fixed) -->
+        <!-- Jackson Databind - upgraded from 2.9.10 (43+ deser CVEs fixed) -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.10.8</version>
+            <version>2.13.4.2</version>
         </dependency>
 
-        <!-- Commons Collections - upgraded from 3.2.1 (RCE CVE-2015-7501 fixed) -->
+        <!-- Commons Collections - upgraded from 3.2.1 (RCE fixed) -->
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>3.2.2</version>
         </dependency>
 
-        <!-- Commons Text - upgraded from 1.9 (Text4Shell CVE-2022-42889 CVSS 9.8 fixed) -->
+        <!-- Commons Text - upgraded from 1.9 (Text4Shell fixed) -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>1.10.0</version>
         </dependency>
 
-        <!-- SnakeYAML - upgraded from 1.30 (RCE CVE-2022-1471 fixed) -->
+        <!-- SnakeYAML - upgraded from 1.30 (RCE fixed) -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>2.0</version>
         </dependency>
 
-        <!-- Commons FileUpload - upgraded from 1.4 (CVE-2023-24998 fixed) -->
+        <!-- Commons FileUpload - upgraded from 1.4 -->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.5.0</version>
+            <version>1.6.0</version>
         </dependency>
 
-        <!-- Guava - upgraded from 31.0.1-jre (CVE-2023-2976 fixed) -->
+        <!-- Guava - upgraded from 31.0.1-jre -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>32.0.1-jre</version>
         </dependency>
 
-        <!-- Gson - upgraded from 2.8.6 (CVE-2022-25647 fixed) -->
+        <!-- Gson - upgraded from 2.8.6 -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.9</version>
         </dependency>
 
-        <!-- H2 Database - upgraded from 2.0.202 (RCE CVE-2021-42392 CVSS 9.8 fixed) -->
+        <!-- H2 Database - upgraded from 2.0.202 (RCE fixed) -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.2.220</version>
         </dependency>
 
-        <!-- HttpClient - upgraded from 4.5.12 (CVE-2020-13956 fixed) -->
+        <!-- HttpClient - upgraded from 4.5.12 -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.14</version>
         </dependency>
 
-        <!-- Netty - kept at 4.1.68.Final (manual review needed for upgrade path) -->
+        <!-- Netty - kept at 4.1.68.Final (manual review needed) -->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.1.68.Final</version>
         </dependency>
 
-        <!-- Apache POI - upgraded from 4.1.0 (CVE-2019-12415 fixed) -->
+        <!-- Apache POI - upgraded from 4.1.0 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>4.1.1</version>
         </dependency>
 
-        <!-- Bouncy Castle - upgraded from 1.68 (5 CVEs fixed) -->
+        <!-- Bouncy Castle - upgraded from 1.68 -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
