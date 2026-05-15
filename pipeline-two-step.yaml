@@ -1,0 +1,67 @@
+# =============================================================================
+# TWO-STEP VULNERABILITY PIPELINE (Recommended)
+# =============================================================================
+# Step 1: Vulnerability Scanner - Detects vulnerabilities (annotations show vulns)
+# Step 2: Vulnerability Remediator - Creates fixes and PR (annotations show PR link)
+# =============================================================================
+
+pipeline:
+  identifier: vuln_scan_and_fix
+  name: Vulnerability Scan and Fix
+  projectIdentifier: Bin_Claude
+  orgIdentifier: default
+  tags:
+    purpose: security-automation
+  properties:
+    ci:
+      codebase:
+        connectorRef: github
+        repoName: Gargithakur01/vuln-test-repo
+        build:
+          type: branch
+          spec:
+            branch: main
+  stages:
+    - stage:
+        identifier: security
+        type: CI
+        name: Security
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              # ===========================================
+              # STEP 1: Vulnerability Scanner (Original)
+              # ===========================================
+              # Annotations: Vulnerability cards (CRITICAL, HIGH, etc.)
+              # No changes to original agent YAML needed
+              - step:
+                  identifier: Vulnerability_Scanner
+                  type: Agent
+                  name: Vulnerability Scanner
+                  spec:
+                    agentName: risk_analyzer  # Original agent, unchanged
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []
+              
+              # ===========================================
+              # STEP 2: Vulnerability Remediator (New)
+              # ===========================================
+              # Annotations: PR link, packages fixed
+              # Separate from detection - cleaner UX
+              - step:
+                  identifier: Vulnerability_Remediator
+                  type: Agent
+                  name: Vulnerability Remediator
+                  spec:
+                    agentName: vuln_remediator  # New agent
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []

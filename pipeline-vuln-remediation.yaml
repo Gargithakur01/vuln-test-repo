@@ -1,0 +1,41 @@
+pipeline:
+  identifier: vuln_remediation_test
+  name: Vulnerability Remediation Test
+  projectIdentifier: Bin_Claude
+  orgIdentifier: default
+  tags:
+    purpose: security-remediation
+  properties:
+    ci:
+      codebase:
+        connectorRef: github
+        repoName: Gargithakur01/vuln-test-repo
+        build:
+          type: branch
+          spec:
+            branch: main
+  stages:
+    - stage:
+        identifier: remediate_vulnerabilities
+        type: CI
+        name: Remediate Vulnerabilities
+        description: "Scan, fix, verify, and create PR for vulnerability fixes"
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  identifier: Vuln_Remediation_Agent
+                  type: Agent
+                  name: Vulnerability Remediation Agent
+                  spec:
+                    agentName: vuln_remediation
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []

@@ -1,0 +1,47 @@
+pipeline:
+  projectIdentifier: Bin_Claude
+  orgIdentifier: default
+  tags:
+    purpose: security-testing
+  properties:
+    ci:
+      codebase:
+        connectorRef: vulntestrepo
+        build: <+input>
+        sparseCheckout: []
+  stages:
+    - stage:
+        identifier: vulnerability_scan
+        type: CI
+        name: Vulnerability Scan
+        description: Scan all dependencies for vulnerabilities across Go, Node.js, Java, Python, and Docker
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  identifier: Dependency_Risk_Agent
+                  type: Agent
+                  name: Dependency Risk Agent
+                  spec:
+                    agentName: risk_analyzer
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []
+              - step:
+                  identifier: Vulnerability_Remediator
+                  type: Agent
+                  name: Vulnerability Remediator
+                  spec:
+                    agentName: risk-remediation  # Fixed: matches Harness UI name
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []
+  identifier: riskmultilang_Clone
+  name: risk-multi-lang - Clone

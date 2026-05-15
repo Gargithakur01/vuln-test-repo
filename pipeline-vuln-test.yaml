@@ -1,0 +1,41 @@
+pipeline:
+  identifier: vuln_test_scanner
+  name: Vulnerability Test Scanner
+  projectIdentifier: Bin_Claude
+  orgIdentifier: default
+  tags:
+    purpose: security-testing
+  properties:
+    ci:
+      codebase:
+        connectorRef: github
+        repoName: Gargithakur01/vuln-test-repo
+        build:
+          type: branch
+          spec:
+            branch: main
+  stages:
+    - stage:
+        identifier: vulnerability_scan
+        type: CI
+        name: Vulnerability Scan
+        description: "Scan all dependencies for vulnerabilities across Go, Node.js, Java, Python, and Docker"
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  identifier: Dependency_Risk_Agent
+                  type: Agent
+                  name: Dependency Risk Agent
+                  spec:
+                    agentName: risk_analyzer
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []

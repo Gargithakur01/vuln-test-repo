@@ -1,0 +1,81 @@
+# =============================================================================
+# SECURE VULNERABILITY SCAN + REMEDIATION PIPELINE
+# =============================================================================
+# This pipeline:
+# 1. Scans for vulnerabilities (Step 1)
+# 2. Creates fix PR on the SAME platform where code is hosted (Step 2)
+#
+# SECURITY: Requires explicit token for the hosting platform
+# =============================================================================
+
+pipeline:
+  name: Secure Vuln Scan and Remediate
+  identifier: secure_vuln_scan_remediate
+  projectIdentifier: Bin_Claude
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: vulnerability_scan
+        identifier: vulnerability_scan
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              # Step 1: Vulnerability Detection
+              - step:
+                  identifier: Dependency_Risk_Agent
+                  type: Agent
+                  name: Dependency Risk Agent
+                  spec:
+                    agentName: risk_analyzer
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []
+
+              # Step 2: Vulnerability Remediation (SECURE)
+              - step:
+                  identifier: Vulnerability_Remediator
+                  type: Agent
+                  name: Vulnerability Remediator
+                  spec:
+                    agentName: riskanalyzerextended  # Use the secure version
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors:
+                      - devdayharness
+                  # ============================================================
+                  # IMPORTANT: Add the token for YOUR repository's platform
+                  # ============================================================
+                  # The agent will detect the platform from git remote and use
+                  # ONLY the matching token. Other tokens are ignored.
+                  #
+                  # For GitHub repositories:
+                  env:
+                    GITHUB_TOKEN: <+secrets.getValue('gargi-github-pat')>
+                  #
+                  # For GitLab repositories:
+                  # env:
+                  #   GITLAB_TOKEN: <+secrets.getValue('your-gitlab-token')>
+                  #
+                  # For Bitbucket repositories:
+                  # env:
+                  #   BITBUCKET_TOKEN: <+secrets.getValue('your-bitbucket-token')>
+                  #
+                  # For Harness Code repositories:
+                  # env:
+                  #   HARNESS_CODE_TOKEN: <+secrets.getValue('your-harness-pat')>
+                  # ============================================================
+
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: vulntestrepo  # Your GitHub connector
+        repoName: vuln-test-repo
+        build: <+input>

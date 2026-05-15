@@ -131,6 +131,23 @@
             <artifactId>bcprov-jdk15on</artifactId>
             <version>1.68</version>
         </dependency>
+
+        <!-- Safe dependencies (latest versions, no known CVEs) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.errorprone</groupId>
+            <artifactId>error_prone_annotations</artifactId>
+            <version>2.26.1</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,0 +1,63 @@
+# =============================================================================
+# VULNERABILITY SCAN + REMEDIATION PIPELINE
+# =============================================================================
+# This pipeline runs two agents in sequence:
+# 1. Dependency Risk Agent (Scanner) - Detects vulnerabilities
+# 2. Vulnerability Remediation Agent - Creates fixes and raises PR
+#
+# The codebase connector is used for both clone AND push (no extra secrets needed)
+# =============================================================================
+
+pipeline:
+  identifier: vuln_scan_and_remediate
+  name: Vulnerability Scan and Remediate
+  projectIdentifier: Bin_Claude
+  orgIdentifier: default
+  tags:
+    purpose: security-automation
+  properties:
+    ci:
+      codebase:
+        connectorRef: github  # This connector's credentials are used for push too
+        repoName: Gargithakur01/vuln-test-repo
+        build:
+          type: branch
+          spec:
+            branch: main
+  stages:
+    - stage:
+        identifier: security_scan
+        type: CI
+        name: Security Scan & Remediate
+        description: "Scan dependencies, fix vulnerabilities, and create PR"
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              # Step 1: Run the existing vulnerability scanner
+              - step:
+                  identifier: Vulnerability_Scanner
+                  type: Agent
+                  name: Vulnerability Scanner
+                  spec:
+                    agentName: risk_analyzer
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []
+              
+              # Step 2: Run the remediation agent to create fixes
+              - step:
+                  identifier: Vulnerability_Remediator
+                  type: Agent
+                  name: Vulnerability Remediator
+                  spec:
+                    agentName: vuln_remediation
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors: []

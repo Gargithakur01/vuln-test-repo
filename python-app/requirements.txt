@@ -66,3 +66,10 @@ redis==4.3.0
 
 # HIGH: python-jose - CVE-2024-33663
 python-jose==3.3.0
+
+# Safe dependencies (latest versions, no known CVEs)
+click==8.1.7
+rich==13.7.1
+pydantic==2.7.1
+python-dotenv==1.0.1
+httptools==0.6.1

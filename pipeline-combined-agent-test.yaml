@@ -1,0 +1,72 @@
+# =============================================================================
+# TEST PIPELINE: Combined Vulnerability Scan and Remediation
+# =============================================================================
+# This pipeline uses a SINGLE agent that:
+# 1. Detects vulnerabilities (posts detailed annotations)
+# 2. Fixes them with MINIMUM version bumps
+# 3. Re-scans to verify (console output only)
+# 4. Creates PR (posts single PR link annotation)
+#
+# Total scans: 2 (optimal)
+# Annotations: Detection findings + PR link (no duplication)
+# =============================================================================
+
+pipeline:
+  name: Combined Vuln Scan and Remediate
+  identifier: combined_vuln_scan_remediate
+  projectIdentifier: Bin_Claude
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: vulnerability_scan_and_fix
+        identifier: vulnerability_scan_and_fix
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: Vuln_Scan_And_Remediate
+                  type: Agent
+                  name: Vulnerability Scan and Remediate
+                  spec:
+                    agentName: vuln_scan_remediate  # Update with your agent name
+                    agentSettings: ""
+                    llmConnector: test
+                    mcpConnectors:
+                      - devdayharness
+                  # ============================================================
+                  # REQUIRED: Add token for your repository's platform
+                  # ============================================================
+                  # The agent detects the platform from git remote origin URL
+                  # and uses ONLY the matching token.
+                  #
+                  # For GitHub repositories (like vuln-test-repo):
+                  env:
+                    GITHUB_TOKEN: <+secrets.getValue('gargi-github-pat')>
+                  #
+                  # For GitLab repositories:
+                  # env:
+                  #   GITLAB_TOKEN: <+secrets.getValue('your-gitlab-token')>
+                  #
+                  # For Bitbucket repositories:
+                  # env:
+                  #   BITBUCKET_TOKEN: <+secrets.getValue('your-bitbucket-token')>
+                  #
+                  # For Harness Code repositories:
+                  # env:
+                  #   HARNESS_CODE_TOKEN: <+secrets.getValue('your-harness-pat')>
+                  # ============================================================
+
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: vulntestrepo  # Your GitHub connector
+        repoName: vuln-test-repo
+        build: <+input>
