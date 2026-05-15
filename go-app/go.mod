@@ -4,10 +4,10 @@ go 1.19
 
 require (
 	// Fixed: replaced deprecated dgrijalva/jwt-go with golang-jwt/jwt/v4
-	github.com/golang-jwt/jwt/v4 v4.5.1
+	github.com/golang-jwt/jwt/v4 v4.5.2
 	github.com/gin-gonic/gin v1.9.1
 	golang.org/x/crypto v0.45.0
-	golang.org/x/net v0.7.0
+	golang.org/x/net v0.53.0
 	golang.org/x/text v0.3.8
 	gopkg.in/yaml.v2 v2.2.8
 
