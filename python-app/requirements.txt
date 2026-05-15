@@ -1,75 +1,77 @@
-# Vulnerable Python Dependencies for Security Testing
-# DO NOT USE IN PRODUCTION!
+# Python Dependencies - Security Patched
+# Versions updated to remediate known CVEs
 
-# CRITICAL: Django SQL Injection - CVE-2020-9402, CVE-2021-35042
-Django==2.2.0
+# Django - patched for SQL injection, XSS, DoS
+Django>=4.2.21
 
-# HIGH: Requests - CVE-2023-32681 (Session handling)
-requests==2.25.0
+# Requests - patched session handling
+requests>=2.32.0
 
-# CRITICAL: PyYAML Arbitrary Code Execution - CVE-2020-14343
-PyYAML==5.3
+# PyYAML - patched arbitrary code execution
+PyYAML>=5.4
 
-# HIGH: Pillow Multiple CVEs (Buffer overflow, DoS)
-Pillow==8.0.0
+# Pillow - patched buffer overflow, DoS
+Pillow>=10.3.0
 
-# HIGH: urllib3 - CVE-2021-33503 (ReDoS), CVE-2023-43804
-urllib3==1.25.0
+# urllib3 - patched ReDoS, header injection
+urllib3>=2.2.2
 
-# HIGH: cryptography - Multiple CVEs
-cryptography==3.3.0
+# cryptography - patched multiple CVEs
+cryptography>=44.0.0
 
-# CRITICAL: Jinja2 - CVE-2024-22195 (XSS)
-Jinja2==2.11.0
+# Jinja2 - patched XSS
+Jinja2>=3.1.6
 
-# HIGH: Flask - CVE-2023-30861
-Flask==1.1.2
+# Flask - patched session issues
+Flask>=3.1.1
 
-# HIGH: Werkzeug - CVE-2023-25577, CVE-2024-34069
-Werkzeug==1.0.0
+# Werkzeug - patched debug shell, DoS
+Werkzeug>=3.1.3
 
-# CRITICAL: paramiko - CVE-2023-48795 (Terrapin attack)
-paramiko==2.7.0
+# paramiko - patched Terrapin attack
+paramiko>=3.4.0
 
-# HIGH: lxml - CVE-2021-43818, CVE-2022-2309
-lxml==4.6.2
+# lxml - patched XSS, NULL pointer
+lxml>=5.1.0
 
-# HIGH: httpx - CVE-2021-41945
-httpx==0.18.0
+# httpx - patched open redirect
+httpx>=0.23.0
 
-# MEDIUM: numpy - CVE-2021-41496
-numpy==1.19.0
+# numpy - patched buffer overflow
+numpy>=1.22
 
-# HIGH: aiohttp - CVE-2023-49081, CVE-2024-23334
-aiohttp==3.7.0
+# aiohttp - patched multiple request smuggling
+aiohttp>=3.11.18
 
-# MEDIUM: setuptools - CVE-2022-40897
-setuptools==58.0.0
+# setuptools - patched ReDoS
+setuptools>=78.1.1
 
-# HIGH: certifi - CVE-2023-37920
-certifi==2022.12.7
+# certifi - patched revoked root cert
+certifi>=2024.7.4
 
-# CRITICAL: sqlparse - CVE-2024-4340 (ReDoS)
-sqlparse==0.4.2
+# sqlparse - patched ReDoS
+sqlparse>=0.5.0
 
-# HIGH: pycryptodome - Multiple CVEs
-pycryptodome==3.9.0
+# pycryptodome - patched side channel
+pycryptodome>=3.19.1
 
-# MEDIUM: idna - CVE-2024-3651
-idna==2.10
+# idna - patched resource consumption
+idna>=3.7
 
-# HIGH: tornado - CVE-2023-28370
-tornado==6.1
+# tornado - patched CRLF injection, open redirect
+tornado>=6.5.5
 
-# MEDIUM: redis - CVE-2023-28858
-redis==4.3.0
+# redis - patched connection handling
+redis>=4.5.4
 
-# HIGH: python-jose - CVE-2024-33663
-python-jose==3.3.0
+# python-jose - patched denial of service
+python-jose>=3.4.0
+
+# python-dotenv - patched path traversal
+python-dotenv>=1.2.2
 
 # Safe dependencies (latest versions, no known CVEs)
 click==8.1.7
 rich==13.7.1
 pydantic==2.7.1
-python-dotenv==1.0.1
 httptools==0.6.1
