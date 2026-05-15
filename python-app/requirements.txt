@@ -1,68 +1,68 @@
-# Vulnerable Python Dependencies for Security Testing
-# DO NOT USE IN PRODUCTION!
+# Python Dependencies - Security Remediated
+# Updated by Harness Security Bot
 
-# CRITICAL: Django SQL Injection - CVE-2020-9402, CVE-2021-35042
-Django==2.2.0
+# Django - upgraded from 2.2.0 (63 CVEs fixed)
+Django>=4.2.20
 
-# HIGH: Requests - CVE-2023-32681 (Session handling)
-requests==2.25.0
+# Requests - upgraded from 2.25.0 (5 CVEs fixed)
+requests>=2.32.3
 
-# CRITICAL: PyYAML Arbitrary Code Execution - CVE-2020-14343
-PyYAML==5.3
+# PyYAML - upgraded from 5.3 (CVE-2020-14343 RCE fixed)
+PyYAML>=5.4
 
-# HIGH: Pillow Multiple CVEs (Buffer overflow, DoS)
-Pillow==8.0.0
+# Pillow - upgraded from 8.0.0 (58 CVEs fixed)
+Pillow>=10.3.0
 
-# HIGH: urllib3 - CVE-2021-33503 (ReDoS), CVE-2023-43804
-urllib3==1.25.0
+# urllib3 - upgraded from 1.25.0 (13 CVEs fixed)
+urllib3>=2.0.7
 
-# HIGH: cryptography - Multiple CVEs
-cryptography==3.3.0
+# cryptography - upgraded from 3.3.0 (14 CVEs fixed)
+cryptography>=43.0.1
 
-# CRITICAL: Jinja2 - CVE-2024-22195 (XSS)
-Jinja2==2.11.0
+# Jinja2 - upgraded from 2.11.0 (6 CVEs fixed including XSS)
+Jinja2>=3.1.6
 
-# HIGH: Flask - CVE-2023-30861
-Flask==1.1.2
+# Flask - upgraded from 1.1.2 (3 CVEs fixed)
+Flask>=3.0.3
 
-# HIGH: Werkzeug - CVE-2023-25577, CVE-2024-34069
-Werkzeug==1.0.0
+# Werkzeug - upgraded from 1.0.0 (13 CVEs fixed)
+Werkzeug>=3.0.6
 
-# CRITICAL: paramiko - CVE-2023-48795 (Terrapin attack)
-paramiko==2.7.0
+# paramiko - upgraded from 2.7.0 (Terrapin attack fixed)
+paramiko>=3.4.0
 
-# HIGH: lxml - CVE-2021-43818, CVE-2022-2309
-lxml==4.6.2
+# lxml - upgraded from 4.6.2 (7 CVEs fixed)
+lxml>=4.9.4
 
-# HIGH: httpx - CVE-2021-41945
-httpx==0.18.0
+# httpx - upgraded from 0.18.0 (2 CVEs fixed)
+httpx>=0.23.0
 
-# MEDIUM: numpy - CVE-2021-41496
-numpy==1.19.0
+# numpy - upgraded from 1.19.0 (3 CVEs fixed)
+numpy>=1.22.0
 
-# HIGH: aiohttp - CVE-2023-49081, CVE-2024-23334
-aiohttp==3.7.0
+# aiohttp - upgraded from 3.7.0 (39 CVEs fixed)
+aiohttp>=3.10.11
 
-# MEDIUM: setuptools - CVE-2022-40897
-setuptools==58.0.0
+# setuptools - upgraded from 58.0.0 (5 CVEs fixed)
+setuptools>=78.1.1
 
-# HIGH: certifi - CVE-2023-37920
-certifi==2022.12.7
+# certifi - upgraded from 2022.12.7 (4 CVEs fixed)
+certifi>=2024.7.4
 
-# CRITICAL: sqlparse - CVE-2024-4340 (ReDoS)
-sqlparse==0.4.2
+# sqlparse - upgraded from 0.4.2 (4 CVEs fixed including ReDoS)
+sqlparse>=0.5.0
 
-# HIGH: pycryptodome - Multiple CVEs
-pycryptodome==3.9.0
+# pycryptodome - upgraded from 3.9.0 (1 CVE fixed)
+pycryptodome>=3.19.1
 
-# MEDIUM: idna - CVE-2024-3651
-idna==2.10
+# idna - upgraded from 2.10 (2 CVEs fixed)
+idna>=3.7
 
-# HIGH: tornado - CVE-2023-28370
-tornado==6.1
+# tornado - upgraded from 6.1 (10 CVEs fixed)
+tornado>=6.4.2
 
-# MEDIUM: redis - CVE-2023-28858
-redis==4.3.0
+# redis - upgraded from 4.3.0 (4 CVEs fixed)
+redis>=4.5.4
 
-# HIGH: python-jose - CVE-2024-33663
-python-jose==3.3.0
+# python-jose - upgraded from 3.3.0 (4 CVEs fixed)
+python-jose>=3.4.0
