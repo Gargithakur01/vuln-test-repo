@@ -1,0 +1,36 @@
+# Vulnerable Dockerfile - Node.js Application
+# DO NOT USE IN PRODUCTION!
+
+# VULNERABILITY: Node 14 is EOL (End of Life as of April 2023)
+FROM node:14-alpine
+
+# VULNERABILITY: Alpine 3.14 is EOL
+# VULNERABILITY: Running as root
+
+WORKDIR /app
+
+# VULNERABILITY: Unpinned apk packages
+RUN apk add --no-cache \
+    git \
+    openssh \
+    curl \
+    python3 \
+    make \
+    g++
+
+# VULNERABILITY: npm install without --ignore-scripts can execute malicious scripts
+COPY package*.json ./
+RUN npm install
+
+# VULNERABILITY: Downloading binary without verification
+RUN curl -L https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -o /usr/local/bin/jq \
+    && chmod +x /usr/local/bin/jq
+
+COPY . .
+
+# VULNERABILITY: Running node as root
+# VULNERABILITY: No healthcheck
+
+EXPOSE 3000
+
+CMD ["node", "index.js"]

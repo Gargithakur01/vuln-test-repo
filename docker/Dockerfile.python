@@ -1,0 +1,39 @@
+# Vulnerable Dockerfile - Python Application
+# DO NOT USE IN PRODUCTION!
+
+# VULNERABILITY: Python 3.8 is EOL (End of Life as of October 2024)
+FROM python:3.8-slim
+
+# VULNERABILITY: Running as root
+# VULNERABILITY: No USER directive
+
+WORKDIR /app
+
+# VULNERABILITY: Unpinned apt packages
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    git \
+    openssh-client \
+    && rm -rf /var/lib/apt/lists/*
+
+# VULNERABILITY: Copying requirements without hash verification
+COPY requirements.txt .
+
+# VULNERABILITY: Installing packages without hash verification
+RUN pip install --no-cache-dir -r requirements.txt
+
+# VULNERABILITY: Downloading binary without checksum verification
+RUN curl -L https://github.com/mikefarah/yq/releases/download/v4.25.1/yq_linux_amd64 -o /usr/local/bin/yq \
+    && chmod +x /usr/local/bin/yq
+
+COPY . .
+
+# VULNERABILITY: Debug mode enabled
+ENV FLASK_DEBUG=1
+ENV FLASK_ENV=development
+
+# VULNERABILITY: Exposing on all interfaces
+EXPOSE 5000
+
+CMD ["python", "app.py"]

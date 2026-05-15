@@ -1,0 +1,64 @@
+# Vulnerable Multi-Stage Dockerfile
+# DO NOT USE IN PRODUCTION!
+
+# Stage 1: Build
+# VULNERABILITY: Debian Buster is EOL
+FROM debian:buster AS builder
+
+# VULNERABILITY: Unpinned packages
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    wget \
+    git \
+    python3 \
+    python3-pip \
+    nodejs \
+    npm
+
+WORKDIR /build
+
+# VULNERABILITY: Downloading from HTTP (not HTTPS)
+RUN curl -L http://example.com/build-tools.tar.gz | tar -xz || true
+
+# VULNERABILITY: Using pip without hash verification
+RUN pip3 install awscli boto3 requests
+
+# Stage 2: Runtime
+# VULNERABILITY: Ubuntu 18.04 is EOL
+FROM ubuntu:18.04
+
+# VULNERABILITY: Running as root
+WORKDIR /app
+
+# VULNERABILITY: Unpinned packages with known vulnerabilities
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    git \
+    openssh-client \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# VULNERABILITY: Installing vulnerable Python packages
+RUN pip3 install django==2.2.0 flask==1.1.2 requests==2.25.0
+
+# VULNERABILITY: Downloading and executing remote script
+RUN curl -sSL https://get.docker.com | sh || true
+
+# VULNERABILITY: World-writable directory
+RUN mkdir -p /app/data && chmod 777 /app/data
+
+# VULNERABILITY: Hardcoded credentials
+ENV DB_PASSWORD=admin123
+ENV API_KEY=sk-1234567890abcdef
+
+# VULNERABILITY: SSH keys in image (simulated path)
+# COPY id_rsa /root/.ssh/id_rsa
+
+COPY --from=builder /build /app
+
+EXPOSE 80 443 22 3306 5432
+
+CMD ["/bin/bash"]
