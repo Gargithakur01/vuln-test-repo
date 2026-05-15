@@ -2,22 +2,22 @@
 # Versions updated to minimum fix versions addressing known CVEs
 
 # Django - Fixed SQL injection, XSS, and multiple CVEs
-Django>=4.2.20
+Django>=5.0.14
 
 # Requests - Fixed session handling CVE-2023-32681
-requests>=2.32.0
+requests>=2.32.4
 
 # PyYAML - Fixed arbitrary code execution CVE-2020-14343
 PyYAML>=5.4
 
 # Pillow - Fixed buffer overflow, DoS, and multiple CVEs
-Pillow>=10.3.0
+Pillow>=11.2.1
 
 # urllib3 - Fixed ReDoS CVE-2021-33503, CVE-2023-43804
-urllib3>=2.2.2
+urllib3>=2.4.0
 
 # cryptography - Fixed multiple CVEs
-cryptography>=44.0.1
+cryptography>=45.0.3
 
 # Jinja2 - Fixed XSS CVE-2024-22195
 Jinja2>=3.1.6
@@ -26,7 +26,7 @@ Jinja2>=3.1.6
 Flask>=2.3.2
 
 # Werkzeug - Fixed CVE-2023-25577, CVE-2024-34069
-Werkzeug>=3.0.6
+Werkzeug>=3.1.6
 
 # paramiko - Fixed Terrapin attack CVE-2023-48795
 paramiko>=3.4.0
@@ -41,7 +41,7 @@ httpx>=0.23.0
 numpy>=1.22.0
 
 # aiohttp - Fixed SSRF, injection, and multiple CVEs
-aiohttp>=3.11.18
+aiohttp>=3.13.4
 
 # setuptools - Fixed CVE-2022-40897
 setuptools>=78.1.1
@@ -59,7 +59,7 @@ pycryptodome>=3.19.1
 idna>=3.7
 
 # tornado - Fixed CVE-2023-28370
-tornado>=6.4.2
+tornado>=6.5.5
 
 # redis - Fixed CVE-2023-28858
 redis>=4.5.4
