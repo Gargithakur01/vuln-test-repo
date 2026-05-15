@@ -3,13 +3,13 @@ module github.com/example/vuln-go-app
 go 1.19
 
 require (
-	// Vulnerable dependencies (for testing)
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
-	github.com/gin-gonic/gin v1.6.3
-	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
-	golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3
-	golang.org/x/text v0.3.0
-	gopkg.in/yaml.v2 v2.2.2
+	// Fixed: replaced deprecated dgrijalva/jwt-go with golang-jwt/jwt/v4
+	github.com/golang-jwt/jwt/v4 v4.5.1
+	github.com/gin-gonic/gin v1.9.1
+	golang.org/x/crypto v0.45.0
+	golang.org/x/net v0.7.0
+	golang.org/x/text v0.3.8
+	gopkg.in/yaml.v2 v2.2.8
 
 	// Safe dependencies (latest versions, no known CVEs)
 	github.com/google/uuid v1.6.0

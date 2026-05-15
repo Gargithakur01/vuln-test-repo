@@ -1,75 +1,75 @@
-# Vulnerable Python Dependencies for Security Testing
-# DO NOT USE IN PRODUCTION!
+# Security-patched Python Dependencies
+# Remediated by Harness Security Bot
 
-# CRITICAL: Django SQL Injection - CVE-2020-9402, CVE-2021-35042
-Django==2.2.0
+# FIXED: Django - updated to latest 4.2 LTS (covers all CVEs)
+Django>=4.2.21
 
-# HIGH: Requests - CVE-2023-32681 (Session handling)
-requests==2.25.0
+# FIXED: Requests - CVE-2023-32681
+requests>=2.32.0
 
-# CRITICAL: PyYAML Arbitrary Code Execution - CVE-2020-14343
-PyYAML==5.3
+# FIXED: PyYAML - CVE-2020-14343
+PyYAML>=6.0.2
 
-# HIGH: Pillow Multiple CVEs (Buffer overflow, DoS)
-Pillow==8.0.0
+# FIXED: Pillow - Multiple CVEs
+Pillow>=11.2.1
 
-# HIGH: urllib3 - CVE-2021-33503 (ReDoS), CVE-2023-43804
-urllib3==1.25.0
+# FIXED: urllib3 - Multiple CVEs
+urllib3>=2.3.0
 
-# HIGH: cryptography - Multiple CVEs
-cryptography==3.3.0
+# FIXED: cryptography - Multiple CVEs
+cryptography>=45.0.3
 
-# CRITICAL: Jinja2 - CVE-2024-22195 (XSS)
-Jinja2==2.11.0
+# FIXED: Jinja2 - CVE-2024-22195
+Jinja2>=3.1.6
 
-# HIGH: Flask - CVE-2023-30861
-Flask==1.1.2
+# FIXED: Flask - CVE-2023-30861
+Flask>=3.1.1
 
-# HIGH: Werkzeug - CVE-2023-25577, CVE-2024-34069
-Werkzeug==1.0.0
+# FIXED: Werkzeug - Multiple CVEs
+Werkzeug>=3.1.3
 
-# CRITICAL: paramiko - CVE-2023-48795 (Terrapin attack)
-paramiko==2.7.0
+# FIXED: paramiko - CVE-2023-48795
+paramiko>=3.4.0
 
-# HIGH: lxml - CVE-2021-43818, CVE-2022-2309
-lxml==4.6.2
+# FIXED: lxml - Multiple CVEs
+lxml>=5.3.2
 
-# HIGH: httpx - CVE-2021-41945
-httpx==0.18.0
+# FIXED: httpx - CVE-2021-41945
+httpx>=0.23.0
 
-# MEDIUM: numpy - CVE-2021-41496
-numpy==1.19.0
+# FIXED: numpy - CVE-2021-41496
+numpy>=1.22.0
 
-# HIGH: aiohttp - CVE-2023-49081, CVE-2024-23334
-aiohttp==3.7.0
+# FIXED: aiohttp - Multiple CVEs
+aiohttp>=3.11.18
 
-# MEDIUM: setuptools - CVE-2022-40897
-setuptools==58.0.0
+# FIXED: setuptools - CVE-2022-40897
+setuptools>=78.1.1
 
-# HIGH: certifi - CVE-2023-37920
-certifi==2022.12.7
+# FIXED: certifi - CVE-2023-37920
+certifi>=2024.8.30
 
-# CRITICAL: sqlparse - CVE-2024-4340 (ReDoS)
-sqlparse==0.4.2
+# FIXED: sqlparse - CVE-2024-4340
+sqlparse>=0.5.0
 
-# HIGH: pycryptodome - Multiple CVEs
-pycryptodome==3.9.0
+# FIXED: pycryptodome - Multiple CVEs
+pycryptodome>=3.19.1
 
-# MEDIUM: idna - CVE-2024-3651
-idna==2.10
+# FIXED: idna - CVE-2024-3651
+idna>=3.7
 
-# HIGH: tornado - CVE-2023-28370
-tornado==6.1
+# FIXED: tornado - Multiple CVEs
+tornado>=6.5.5
 
-# MEDIUM: redis - CVE-2023-28858
-redis==4.3.0
+# FIXED: redis - CVE-2023-28858
+redis>=4.5.4
 
-# HIGH: python-jose - CVE-2024-33663
-python-jose==3.3.0
+# FIXED: python-jose - CVE-2024-33663
+python-jose>=3.4.0
 
-# Safe dependencies (latest versions, no known CVEs)
+# Safe dependencies (no known CVEs)
 click==8.1.7
 rich==13.7.1
 pydantic==2.7.1
-python-dotenv==1.0.1
+python-dotenv>=1.2.2
 httptools==0.6.1
